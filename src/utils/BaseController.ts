@@ -1,4 +1,4 @@
-import { Elysia } from "Elysia";
+import { Elysia } from "elysia";
 
 export interface Route {
   method: string;

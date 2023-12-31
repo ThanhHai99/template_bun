@@ -1,4 +1,4 @@
-import { t } from "Elysia";
+import { t } from "elysia";
 
 export const NoteBody = t.Object({
   content: t.String({
@@ -20,5 +20,5 @@ export const FullNoteResponse = t.Object({
 });
 
 export const NoteListResponse = t.Array(NoteResponse);
-export const NoteParams = t.Object({ id: t.Numeric() });
+export const NoteParams = t.Object({ id: t.String() });
 export const NoteQuery = t.Object({ limit: t.Optional(t.Numeric()) });

@@ -1,10 +1,9 @@
-import Elysia from "Elysia";
-import { TasksController } from "./../../modules";
+import {Elysia} from "elysia";
+import { TasksController, NotesController } from "./../../modules";
 
 export function CoreModule(app: Elysia) {
-  app.use(TasksController); // without database
-  // app.use(NotesController); // with database
-  // app.use(NotesController); // with auth middleware + database
+  app.use(TasksController);
+  app.use(NotesController);
 }
 
 // TODO: add auth

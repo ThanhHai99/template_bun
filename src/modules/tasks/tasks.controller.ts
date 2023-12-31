@@ -1,4 +1,4 @@
-import { t } from "Elysia";
+import { t } from "elysia";
 import TasksService from "./tasks.service";
 import { BaseController, Delete, Get, Post, Put } from "../../utils";
 

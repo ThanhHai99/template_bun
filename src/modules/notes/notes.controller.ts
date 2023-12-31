@@ -18,39 +18,42 @@ class NotesController extends BaseController {
   }
 
   @Get("/", {
-    query: NoteQuery,
-    response: NoteListResponse,
-    beforeHandle: AuthRoute,
+    // query: NoteQuery,
+    // response: NoteListResponse,
+    // beforeHandle: AuthRoute,
   })
   async index(ctx: any) {
-    return notesService.getAllNotes(ctx.query.limit);
+    return notesService.getAll(ctx.query.limit);
   }
 
-  @Post("/", {
-    body: NoteBody,
-    response: FullNoteResponse,
+  // @Post("/", {
+  //   body: NoteBody,
+  //   response: FullNoteResponse,
+  // })
+  // async create(ctx: any) {
+  //   return await notesService.createNote({ content: ctx.body.content });
+  // }
+
+  @Get("/:id", {
+    params: NoteParams,
+    // response: FullNoteResponse
   })
-  async create(ctx: any) {
-    return await notesService.createNote({ content: ctx.body.content });
-  }
-
-  @Get("/:id", { params: NoteParams, response: FullNoteResponse })
   async show(ctx: any) {
-    return notesService.getNote(ctx.params.id);
+    return notesService.getOne(ctx.params.id);
   }
 
-  @Put("/:id", { params: NoteParams, body: NoteBody, response: NoteResponse })
-  async update(ctx: any) {
-    return notesService.updateNote({
-      id: ctx.params.id,
-      content: ctx.body.content,
-    });
-  }
+  // @Put("/:id", { params: NoteParams, body: NoteBody, response: NoteResponse })
+  // async update(ctx: any) {
+  //   return notesService.updateNote({
+  //     id: ctx.params.id,
+  //     content: ctx.body.content,
+  //   });
+  // }
 
-  @Delete("/:id", { params: NoteParams })
-  async destroy(ctx: any) {
-    notesService.deleteNote(ctx.params.id);
-  }
+  // @Delete("/:id", { params: NoteParams })
+  // async destroy(ctx: any) {
+  //   notesService.deleteNote(ctx.params.id);
+  // }
 }
 
 const notesService = new NotesService();
