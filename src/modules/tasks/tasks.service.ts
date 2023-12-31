@@ -4,13 +4,13 @@ interface Task {
 }
 
 const tasks: Task[] = [
-  { id: 1, title: 'Workout at night' },
-  { id: 2, title: 'Shop after work' },
-  { id: 3, title: 'Get dinner' },
-  { id: 4, title: 'Pay bills' },
-  { id: 5, title: 'Feed the cat' },
-  { id: 6, title: 'Walk the dog' },
-  { id: 7, title: 'Study in the library' },
+  { id: 1, title: "Workout at night" },
+  { id: 2, title: "Shop after work" },
+  { id: 3, title: "Get dinner" },
+  { id: 4, title: "Pay bills" },
+  { id: 5, title: "Feed the cat" },
+  { id: 6, title: "Walk the dog" },
+  { id: 7, title: "Study in the library" },
 ];
 
 export default class TasksService {
@@ -30,7 +30,7 @@ export default class TasksService {
   async getTask(id: number) {
     const task = tasks.find((task) => task.id === id);
     if (!task) {
-      throw new Error('task not found');
+      throw new Error("task not found");
     }
     return task;
   }
@@ -38,7 +38,7 @@ export default class TasksService {
   async updateTask(data: { id: number; title: string }) {
     const task = tasks.find((task) => task.id === data.id);
     if (!task) {
-      throw new Error('task not found');
+      throw new Error("task not found");
     }
     task.title = data.title;
     return task;
@@ -47,7 +47,7 @@ export default class TasksService {
   async deleteTask(id: number) {
     const task = tasks.find((task) => task.id === id);
     if (!task) {
-      throw new Error('task not found');
+      throw new Error("task not found");
     }
     tasks.splice(tasks.indexOf(task), 1);
     return;

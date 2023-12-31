@@ -4,24 +4,24 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "bun run --watch src/index.ts",
-    "dev2": "bun run --hot src/index.ts"
-  },
-  "prisma": {
-    "seed": "node scripts/seed.js"
+    "dev2": "bun run --hot src/index.ts",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix"
   },
   "dependencies": {
     "@elysiajs/bearer": "^0.8.0",
     "@elysiajs/cors": "^0.8.0",
     "@elysiajs/swagger": "^0.3.0",
-    "@prisma/client": "^4.11.0",
     "elysia": "latest",
     "eslint": "^8.56.0",
     "pg": "^8.11.3",
-    "prisma": "^4.11.0",
     "typeorm": "^0.3.17"
   },
   "devDependencies": {
-    "bun-types": "latest"
+    "@typescript-eslint/eslint-plugin": "^6.16.0",
+    "@typescript-eslint/parser": "^6.16.0",
+    "bun-types": "latest",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.2"
   },
   "module": "src/index.js"
 }

@@ -1,8 +1,8 @@
-import { t } from 'Elysia';
+import { t } from "Elysia";
 
 export const NoteBody = t.Object({
   content: t.String({
-    error: 'content is required with minimum length of 5',
+    error: "content is required with minimum length of 5",
     minLength: 5,
   }),
 });

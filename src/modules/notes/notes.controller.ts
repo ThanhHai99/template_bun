@@ -1,23 +1,23 @@
-import NotesService from './notes.service';
-import { AuthRoute } from '../../middlewares';
-import { Delete, Get, Post, Put, BaseController } from '../../utils';
+import NotesService from "./notes.service";
+import { AuthRoute } from "../../middlewares";
+import { BaseController, Delete, Get, Post, Put } from "../../utils";
 import {
-  NoteBody,
-  NoteQuery,
-  NoteParams,
-  NoteResponse,
-  NoteListResponse,
   FullNoteResponse,
-} from './notes.dto';
+  NoteBody,
+  NoteListResponse,
+  NoteParams,
+  NoteQuery,
+  NoteResponse,
+} from "./notes.dto";
 
 class NotesController extends BaseController {
   routes = [];
 
   constructor(public notesService: NotesService) {
-    super('/notes');
+    super("/notes");
   }
 
-  @Get('/', {
+  @Get("/", {
     query: NoteQuery,
     response: NoteListResponse,
     beforeHandle: AuthRoute,
@@ -26,7 +26,7 @@ class NotesController extends BaseController {
     return notesService.getAllNotes(ctx.query.limit);
   }
 
-  @Post('/', {
+  @Post("/", {
     body: NoteBody,
     response: FullNoteResponse,
   })
@@ -34,12 +34,12 @@ class NotesController extends BaseController {
     return await notesService.createNote({ content: ctx.body.content });
   }
 
-  @Get('/:id', { params: NoteParams, response: FullNoteResponse })
+  @Get("/:id", { params: NoteParams, response: FullNoteResponse })
   async show(ctx: any) {
     return notesService.getNote(ctx.params.id);
   }
 
-  @Put('/:id', { params: NoteParams, body: NoteBody, response: NoteResponse })
+  @Put("/:id", { params: NoteParams, body: NoteBody, response: NoteResponse })
   async update(ctx: any) {
     return notesService.updateNote({
       id: ctx.params.id,
@@ -47,7 +47,7 @@ class NotesController extends BaseController {
     });
   }
 
-  @Delete('/:id', { params: NoteParams })
+  @Delete("/:id", { params: NoteParams })
   async destroy(ctx: any) {
     notesService.deleteNote(ctx.params.id);
   }

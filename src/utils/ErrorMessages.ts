@@ -8,12 +8,12 @@ interface CustomError extends Error {
 
 export function handleNotFoundError(error: CustomError, set: any) {
   set.status = 404;
-  return { message: 'Not Found :(', error };
+  return { message: "Not Found :(", error };
 }
 
 export function handleInternalServerError(error: CustomError, set: any) {
   set.status = 500;
-  return { message: 'Internal Server Error :(', error };
+  return { message: "Internal Server Error :(", error };
 }
 
 export function handleValidation(error: CustomError, set: any) {
@@ -24,12 +24,12 @@ export function handleValidation(error: CustomError, set: any) {
     error.validator.schema.properties
   ) {
     return {
-      message: 'Validation Error :(',
+      message: "Validation Error :(",
       error: error.validator.schema.properties,
     };
   } else {
     return {
-      message: 'Validation Error :(',
+      message: "Validation Error :(",
       error: error,
     };
   }
@@ -37,29 +37,29 @@ export function handleValidation(error: CustomError, set: any) {
 
 export function handleParseError(error: CustomError, set: any) {
   set.status = 400;
-  return { message: 'Parse Error :(', error };
+  return { message: "Parse Error :(", error };
 }
 
 export function handleUnknownError(error: CustomError, set: any) {
   set.status = 500;
-  return { message: 'Unknown Error :(', error };
+  return { message: "Unknown Error :(", error };
 }
 
 export function ErrorMessages(
   code: string,
   error: Error | CustomError,
-  set: any
+  set: any,
 ) {
   switch (code) {
-    case 'NOT_FOUND':
+    case "NOT_FOUND":
       return handleNotFoundError(error, set);
-    case 'INTERNAL_SERVER_ERROR':
+    case "INTERNAL_SERVER_ERROR":
       return handleInternalServerError(error, set);
-    case 'VALIDATION':
+    case "VALIDATION":
       return handleValidation(error, set);
-    case 'PARSE':
+    case "PARSE":
       return handleParseError(error, set);
-    case 'UNKNOWN':
+    case "UNKNOWN":
       return handleUnknownError(error, set);
     default:
       return { message: error };

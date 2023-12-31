@@ -1,11 +1,11 @@
-import { db } from '../../database';
-import { InsertNote, Note, notes } from '../../database/schema';
-import { eq } from 'drizzle-orm';
-import { NotFoundError } from 'Elysia';
+import { db } from "../../database";
+import { InsertNote, Note, notes } from "../../database/schema";
+import { eq } from "drizzle-orm";
+import { NotFoundError } from "Elysia";
 
 export default class NotesService {
   async getAllNotes(
-    limit?: number
+    limit?: number,
   ): Promise<{ id: number; content: string | null }[]> {
     const x = db
       .select({ id: notes.id, content: notes.content })
