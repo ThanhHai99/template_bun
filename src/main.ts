@@ -1,4 +1,4 @@
-import {Elysia} from "elysia";
+import { Elysia } from "elysia";
 import cors from "@elysiajs/cors";
 import bearer from "@elysiajs/bearer";
 import {
@@ -22,7 +22,7 @@ try {
   CoreModule(app);
   process.on("SIGINT", app.stop);
   process.on("SIGTERM", app.stop);
-  
+
   app.listen(process.env.PORT!, bootLogger);
 } catch (e) {
   console.log("error booting the server");

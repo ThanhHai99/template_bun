@@ -11,5 +11,4 @@ export default function AuthRoute(ctx: any) {
   // drop your auth logic here
 
   console.log("ok");
-  
 }

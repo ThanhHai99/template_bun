@@ -3,17 +3,13 @@ import { Repository } from "typeorm";
 import AppDataSource from "../config/database.service";
 import { Note } from "./note.repository";
 
+export default class NotesService {
+  private readonly model: Repository<Note> = AppDataSource.getRepository(Note);
 
-export default class NotesService {  
-  private readonly model: Repository<Note> = AppDataSource.getRepository(Note)
-
-  async getAll(
-    limit?: number,
-  ): Promise<any> {
-    const notes = this.model.find()
-    return notes
+  async getAll(limit?: number): Promise<any> {
+    const notes = this.model.find();
+    return notes;
   }
-
 
   // async createNote(data: InsertNote): Promise<Note> {
   //   console.log(data);
@@ -29,7 +25,7 @@ export default class NotesService {
     const result = await this.model.findOneBy({ id });
     if (!result) throw new NotFoundError();
 
-    return result
+    return result;
   }
 
   // async updateNote(data: InsertNote): Promise<Note> {

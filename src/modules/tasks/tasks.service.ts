@@ -15,10 +15,12 @@ const tasks: Task[] = [
 
 export default class TasksService {
   async getAllTasks(limit?: number) {
-    if (limit) {
-      return tasks.slice(0, limit);
-    }
-    return tasks;
+    console.log("do");
+    // if (limit) {
+    //   return tasks.slice(0, limit);
+    // }
+    // return tasks;
+    return true;
   }
 
   async createTask(data: { title: string }) {
